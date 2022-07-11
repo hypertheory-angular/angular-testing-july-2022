@@ -128,11 +128,23 @@
               "devServerTarget": "registrations-web:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "2293574b-25fd-4d2e-94a1-4a173d9436d4"
+    "analytics": "2293574b-25fd-4d2e-94a1-4a173d9436d4",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
