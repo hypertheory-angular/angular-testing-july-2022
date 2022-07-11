@@ -16,14 +16,18 @@ describe('The Courses Route', () => {
     beforeEach(() => {});
 
     describe('has data', () => {
-      cy.intercept('GET', '/api/references/courses', {
-        data: [],
-      });
-      cy.intercept('GET', '/api/references/offerings', {
-        data: [],
+      beforeEach(() => {
+        cy.intercept('/api/references/courses', {
+          fixture: 'many-courses.json',
+        });
+        cy.intercept('GET', '/api/references/offerings', {
+          data: [],
+        });
+
+        cy.visit('/courses');
       });
 
-      cy.visit('/courses');
+      it('shows the stuff', () => {});
     });
     describe('No Courses Returned From Api', () => {
       beforeEach(() => {
