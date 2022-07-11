@@ -23,6 +23,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationRequestsEffects } from './state/effects/registration-requests.effects';
 import { RegistrationRequestsDataEffects } from './state/effects/registration-requests-data.effects';
+import { LetModule } from '@ngrx/component';
 const routes: Routes = [
   {
     path: 'courses',
@@ -69,6 +70,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     UiLibModule,
     StoreModule.forFeature(featureName, reducers),
+    LetModule,
   ],
   exports: [RouterModule],
   providers: [

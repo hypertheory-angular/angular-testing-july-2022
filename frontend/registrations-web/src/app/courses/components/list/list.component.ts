@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CourseListItemModel } from '../../models';
-import { selectCourseList } from '../../state';
+import { selectCourseList, selectCoursesApiHasError } from '../../state';
 
 @Component({
   selector: 'app-list',
@@ -11,9 +11,11 @@ import { selectCourseList } from '../../state';
 })
 export class ListComponent implements OnInit {
   courses$!: Observable<CourseListItemModel[]>;
+  hasError$!: Observable<boolean>;
   constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.courses$ = this.store.select(selectCourseList);
+    this.hasError$ = this.store.select(selectCoursesApiHasError);
   }
 }

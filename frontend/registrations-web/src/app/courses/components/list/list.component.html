@@ -24,6 +24,19 @@
   </div>
 </div>
 
-<div *ngIf="(courses$ | async)?.length === 0" class="alert alert-info">
-  <p>No courses found. (or they are still loading...)</p>
-</div>
+<ng-container *ngrxLet="hasError$ as apiError">
+  <div
+    class="alert alert-danger"
+    *ngIf="apiError === true"
+    data-test-id="courses-list-alert-api-error"
+  >
+    <p>Sorry, there was an API Error.</p>
+  </div>
+  <div
+    *ngIf="(courses$ | async)?.length === 0 && apiError === false"
+    data-test-id="courses-list-alert-no-courses"
+    class="alert alert-info"
+  >
+    <p>No courses found.</p>
+  </div>
+</ng-container>

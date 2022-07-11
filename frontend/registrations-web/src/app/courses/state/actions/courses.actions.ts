@@ -10,7 +10,9 @@ export const coursesCommands = createActionGroup({
 
 export const courseEvents = createActionGroup({
   source: 'Course Events',
-  events: {},
+  events: {
+    courseLoadFailed: emptyProps(),
+  },
 });
 
 export const courseDocuments = createActionGroup({

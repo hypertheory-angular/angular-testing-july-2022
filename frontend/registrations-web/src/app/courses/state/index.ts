@@ -17,6 +17,7 @@ import * as fromCourses from './reducers/courses.reducer';
 import * as fromReferences from './reducers/references.reducer';
 import * as fromOfferings from './reducers/offerings.reducer';
 import * as fromRegistrationRequests from './reducers/registration-requests.reducer';
+import * as fromErrors from './reducers/error.reducer';
 
 import { selectLoggedInUser } from 'src/app/users/state';
 export const featureName = 'Courses Feature';
@@ -26,6 +27,7 @@ export interface CoursesState {
   references: fromReferences.ReferencesState;
   offerings: fromOfferings.OfferingsState;
   registrationRequests: fromRegistrationRequests.RegiestrationRequestsState;
+  errors: fromErrors.ErrorState;
 }
 
 export const reducers: ActionReducerMap<CoursesState> = {
@@ -33,6 +35,7 @@ export const reducers: ActionReducerMap<CoursesState> = {
   references: fromReferences.reducer,
   offerings: fromOfferings.reducer,
   registrationRequests: fromRegistrationRequests.reducer,
+  errors: fromErrors.reducer,
 };
 
 const selectFeature = createFeatureSelector<CoursesState>(featureName);
@@ -44,6 +47,8 @@ const selectReferencesBranch = createSelector(
   selectFeature,
   (f) => f.references
 );
+
+const selectErrorsBranch = createSelector(selectFeature, (f) => f.errors);
 
 const selectRegistrationsRequestBranch = createSelector(
   selectFeature,
@@ -148,4 +153,9 @@ export const selectRegistrationModel = createSelector(
       } as CreateRegistrationModel;
     }
   }
+);
+
+export const selectCoursesApiHasError = createSelector(
+  selectErrorsBranch,
+  (b) => b.courseLoadError
 );
