@@ -1,0 +1,159 @@
+<form [formGroup]="form" (ngSubmit)="submit()" *ngIf="model$ | async as model">
+  <ol class="list-group list-group-numbered">
+    <li
+      class="list-group-item d-flex justify-content-between align-items-start completed"
+    >
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">Student</div>
+
+        {{ model.studentName }}
+      </div>
+      <app-ui-status-indicator></app-ui-status-indicator>
+    </li>
+    <li
+      class="list-group-item d-flex justify-content-between align-items-start completed"
+    >
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">Student Email</div>
+        {{ model.studentEmail }}
+      </div>
+      <app-ui-status-indicator></app-ui-status-indicator>
+    </li>
+    <li
+      class="list-group-item d-flex justify-content-between align-items-start completed"
+    >
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">Course</div>
+        {{ model.course?.title }}
+      </div>
+      <app-ui-status-indicator></app-ui-status-indicator>
+    </li>
+    <li
+      class="list-group-item d-flex justify-content-between align-items-start completed"
+    >
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">Offering</div>
+        {{ model.offering?.startDate | date: "mediumDate" }} ({{
+          model.course?.numberOfDays
+        }}
+        Days)<br />
+        {{ model.offering?.startTime }} -
+        {{ model.offering?.endTime }}
+      </div>
+      <app-ui-status-indicator></app-ui-status-indicator>
+    </li>
+    <li
+      class="list-group-item d-flex justify-content-between align-items-start"
+      [ngClass]="{
+        incomplete: agreeToTerms === false,
+        completed: agreeToTerms === true
+      }"
+    >
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">Agree to Student Terms</div>
+
+        <div class="form-check">
+          <input
+            aria-describedby="termsText"
+            type="checkbox"
+            class="form-check-input"
+            formControlName="agreesToParticipate"
+            id="agree"
+          />
+          <label class="form-check-label" for="agree"
+            >I Agree to the Terms</label
+          >
+          <div id="termsText" class="form-text">
+            You agree to fully participate in the class. If for whatever reason
+            you know you cannot participate fully, please explain in the
+            accomodations request below.
+          </div>
+        </div>
+        <div class="form-check">
+          <input
+            aria-describedby="termsPayText"
+            type="checkbox"
+            class="form-check-input"
+            formControlName="agreesToPay"
+            id="agreeToPay"
+          />
+          <label class="form-check-label" for="agree"
+            >I Agree to Pay $123.86
+          </label>
+          <div id="termsPayText" class="form-text">
+            You agree to pay Hypertheory the full amount of the course.
+            <em>Not really. This is fake.</em>
+          </div>
+        </div>
+        <div
+          class="alert alert-danger"
+          aria-errormessage="You must agree to the terms"
+          *ngIf="termsHasErrors"
+        >
+          <p>You must agree to the terms.</p>
+        </div>
+      </div>
+      <app-ui-status-indicator
+        [status]="agreeToTerms ? 'success' : 'error'"
+        [statusText]="
+          agreeToTerms
+            ? 'You have agreed to the terms'
+            : 'You must agree to the terms'
+        "
+      ></app-ui-status-indicator>
+    </li>
+    <li
+      class="list-group-item d-flex justify-content-between align-items-start"
+      [ngClass]="{
+        optional: hasComments == false,
+        completed: hasComments === true
+      }"
+    >
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">Comments</div>
+
+        <div class="form-group">
+          <label for="comments"
+            >Your Comments or Special Needs <small>(Optional)</small></label
+          >
+          <textarea
+            [maxlength]="commentsMaxLength"
+            aria-describedby="commentsDescription"
+            class="form-control"
+            id="comments"
+            rows="3"
+            cols="100"
+            formControlName="comments"
+          ></textarea>
+          <div id="commentsDescription" class="form-text">
+            Any comments, including special accomodation needs?
+          </div>
+        </div>
+      </div>
+      <app-ui-status-indicator
+        [status]="hasComments ? 'success' : 'optional'"
+        [statusText]="
+          hasComments ? 'Thanks for the comments' : 'Comments are optional.'
+        "
+      ></app-ui-status-indicator>
+    </li>
+    <li
+      class="list-group-item d-flex justify-content-between align-items-start"
+      [ngClass]="{
+        incomplete: formReady === false,
+        completed: formReady === true
+      }"
+    >
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">Register Me For This Class</div>
+        <button type="submit" class="btn btn-primary">
+          Submit Registration Request
+        </button>
+      </div>
+      <app-ui-status-indicator
+        [status]="formReady ? 'success' : 'error'"
+        [statusText]="formReady ? 'Ready to submit' : 'Fix All Errors First!'"
+      ></app-ui-status-indicator>
+    </li>
+  </ol>
+</form>

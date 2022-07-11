@@ -1,0 +1,4 @@
+### Get All Courses
+
+GET http://localhost:1337/api/references/courses HTTP/1.1
+Accept: application/json

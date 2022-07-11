@@ -1,0 +1,43 @@
+ingress:
+  - name: ingress
+    bindings:
+      - port: 1337
+    rules:
+      - path: /api/references/offerings
+        service: offerings-api
+      - path: /api/references/courses
+        service: courses-api
+      - path: /api/bff
+        service: registrations-bff
+
+services:
+- name: courses-api
+  project: ./courses-api/courses-api.csproj
+
+- name: offerings-api
+  project: ./offerings-api/offerings-api.csproj
+
+- name: registrations-bff
+  project: ./registrations-bff/registrations-bff.csproj 
+  bindings:
+    - port: 1338
+
+# Background Stuff
+
+- name: keycloak
+  external: true
+  bindings:
+    - protocol: http
+      port: 8080
+
+- name: mongodb
+  external: true
+  bindings:
+    - port: 27017
+      connectionString: mongodb://root:TokyoJoe138!@localhost:${port}?authSource=admin
+
+- name: mongo-express
+  external: true
+  bindings:
+    - port: 8090
+

@@ -1,0 +1,4 @@
+### Get All Offerings
+
+GET http://localhost:1337/api/references/offerings HTTP/1.1
+Accept: application/json

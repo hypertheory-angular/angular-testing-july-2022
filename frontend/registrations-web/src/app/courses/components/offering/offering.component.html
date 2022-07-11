@@ -1,0 +1,54 @@
+<ng-container *ngIf="data$ | async as data">
+  <div class="alert alert-danger" *ngIf="!data.hasCourse">
+    <strong>Error!</strong> No course found.
+  </div>
+  <div *ngIf="data.hasCourse">
+    <div class="course-display" *ngIf="data.courseInfo as course">
+      <h1>{{ course.title }}</h1>
+      <p>This is a {{ course.numberOfDays }}-day class.</p>
+      <p>{{ course.description }}</p>
+
+      <ul class="list-group" *ngIf="data.offerings as offerings">
+        <li
+          class="list-group-item course-list-item"
+          *ngFor="let offering of offerings"
+        >
+          <p class="course-list-title">
+            {{ course.title }} ({{ offering.deliveryMethod | titlecase }})
+          </p>
+          <p>
+            <b>Dates:</b> {{ offering.startDate | date: "mediumDate" }} -
+            {{ offering.endDate | date: "mediumDate" }} ({{
+              offering.startDate | date: "E"
+            }}
+            - {{ offering.endDate | date: "E" }})
+          </p>
+          <p><b>Times</b>: {{ offering.startTime }} - {{ offering.endTime }}</p>
+          <p><b>Location:</b> {{ offering.location }}</p>
+          <p>
+            <b>Price:</b> {{ offering.price | currency }} for all three days.
+          </p>
+          <div class="course-list-actions">
+            <a
+              [routerLink]="[
+                '/courses',
+                'enrollments',
+                offering.id,
+                'register'
+              ]"
+            >
+              <app-ui-link-button btnSize="sm" btnStyle="success"
+                >Register for this Class</app-ui-link-button
+              >
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-container>
+<div>
+  <app-ui-link-button btnStyle="primary" routerLink="/courses"
+    >Back to Courses</app-ui-link-button
+  >
+</div>

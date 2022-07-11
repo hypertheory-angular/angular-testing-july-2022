@@ -1,0 +1,11 @@
+.course-list-title {
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+.course-list-actions {
+  padding: 1em;
+}
+.course-list-item {
+  margin-bottom: 2em;
+}

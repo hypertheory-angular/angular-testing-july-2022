@@ -1,0 +1,11 @@
+li.completed {
+  border-left: 1.5rem solid rgb(209, 224, 209);
+}
+
+li.incomplete {
+  border-left: 1.5rem solid rgb(236, 138, 138);
+}
+
+li.optional {
+  border-left: 1.5rem solid rgb(166, 195, 211);
+}

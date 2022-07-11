@@ -1,0 +1,6 @@
+<button
+  class="btn btn-{{ btnStyle }}"
+  [ngClass]="{ 'btn-sm': btnSize === 'sm', 'btn-lg': btnSize === 'lg' }"
+>
+  <ng-content></ng-content>
+</button>

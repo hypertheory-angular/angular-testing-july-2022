@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "cypress-keycloak": "^1.9.0"
+  }
+}
