@@ -1,12 +1,15 @@
+import { environment } from '../../../registrations-web/src/environments/environment';
+import { selectors } from './courses.selectors';
+
 describe('The Courses Route', () => {
+  const baseUrl = environment.referencesApiUrl;
   describe('Getting there', () => {
     beforeEach(() => {
       cy.visit('/');
     });
 
     it('allows you to get there from the home page', () => {
-      cy.get('[data-testid="go-to-courses"]')
-        .click()
+      cy.clickGoToCourses()
         .url()
         .should('match', /\/courses$/);
     });
@@ -17,10 +20,10 @@ describe('The Courses Route', () => {
 
     describe('has data', () => {
       beforeEach(() => {
-        cy.intercept('/api/references/courses', {
+        cy.intercept(baseUrl + 'courses', {
           fixture: 'many-courses.json',
         });
-        cy.intercept('/api/references/offerings', {
+        cy.intercept(baseUrl + 'offerings', {
           fixture: 'many-offerings.json',
         });
 
@@ -28,7 +31,7 @@ describe('The Courses Route', () => {
       });
 
       it('shows the stuff', () => {
-        cy.get('[data-test-id="courses-list"]').should('exist');
+        cy.get(selectors.getCoursesList).should('exist');
       });
       it('shows all the courses', () => {
         cy.get('[data-test-id^="courses-list-item-"]').should('have.length', 8);
@@ -44,10 +47,10 @@ describe('The Courses Route', () => {
     });
     describe('No Courses Returned From Api', () => {
       beforeEach(() => {
-        cy.intercept('GET', '/api/references/courses', {
+        cy.intercept('GET', baseUrl + 'courses', {
           data: [],
         });
-        cy.intercept('GET', '/api/references/offerings', {
+        cy.intercept('GET', baseUrl + 'offerings', {
           data: [],
         });
 

@@ -1,10 +1,13 @@
+import { environment } from '../../../registrations-web/src/environments/environment';
+
 describe('course list items', () => {
+  const baseUrl = environment.referencesApiUrl;
   beforeEach(() => {
-    cy.intercept('/api/references/courses', {
+    cy.intercept(baseUrl + 'courses', {
       fixture: 'course-list-variations.json',
     }).as('courses');
 
-    cy.intercept('/api/references/offerings', {
+    cy.intercept(baseUrl + 'offerings', {
       fixture: 'offerings-list-variations.json',
     }).as('offerings');
     cy.visit('/courses');
@@ -39,12 +42,12 @@ describe('course list items', () => {
       cy.wait('@offerings');
     });
     it('The See Offerings Button Is Shown', () => {
-      cy.get('[data-test-id="courses-list-item-0"]')
-        .find('[data-test-id="course-item-offerings"]')
-        .should('exist');
+      cy.get(
+        '[data-test-id="courses-list-item-0"] [data-test-id="course-item-offerings"]'
+      ).should('exist');
 
       cy.get(
-        '[data-test-id="courses-list-item-0"] [data-test-id="course-item-no-offerings]"]'
+        '[data-test-id="courses-list-item-0"] [data-test-id="course-item-no-offerings]"'
       ).should('not.exist');
     });
   });
@@ -58,9 +61,9 @@ describe('course list items', () => {
         '[data-test-id="courses-list-item-1"] [data-test-id="course-item-offerings"]'
       ).should('not.exist');
 
-      cy.get('[data-test-id="courses-list-item-1"]')
-        .find('[data-test-id="course-item-no-offerings"]')
-        .should('exist');
+      cy.get(
+        '[data-test-id="courses-list-item-1"] [data-test-id="course-item-no-offerings"]'
+      ).should('exist');
     });
   });
 });
