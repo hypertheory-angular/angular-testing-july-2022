@@ -2,9 +2,9 @@
   "data": [
     {
       "id": "course-1",
-      "title": "Angular State Management",
-      "description": "While a beginning-level Angular developer entering this training would have the basic skills to create simple Angular applications, when working in a team of developers, having consistent patterns for making data available to components, modeling interactions in a observable, traceable way, and dealing with API calls is imperative.",
-      "numberOfDays": 3
+      "title": "Underwater Basket Weaving",
+      "description": "Learn to make baskets underwater. Warning: Moist",
+      "numberOfDays": 5
     },
     {
       "id": "course-2",

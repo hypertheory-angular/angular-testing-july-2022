@@ -4,30 +4,29 @@
   data-test-id="courses-list"
 >
   <li class="card card-item" *ngFor="let course of courses; index as i">
-    <div
-      [attr.data-test-id]="'courses-list-item-' + i"
-      class="card-header course-title"
-    >
-      {{ course.title }}
-    </div>
-    <div class="card-body">
-      <p>
-        {{ course.description }}
-      </p>
-      <p>This is a {{ course.numberOfDays }}-day class.</p>
-    </div>
-    <div class="card-footer">
-      <a
-        *ngIf="course.hasOfferings"
-        [routerLink]="['offerings', course.id]"
-        class="btn btn-sm btn-success"
-        >See When this Course is Offered</a
-      >
-      <div class="alert alert-info" *ngIf="!course.hasOfferings">
-        This course is not currently offered. Check back later.
-        <app-ui-dev-tip
-          >Maybe let them sign up for a notification?</app-ui-dev-tip
+    <div class="card card-item" [attr.data-test-id]="'courses-list-item-' + i">
+      <div class="card-header course-title">
+        {{ course.title }}
+      </div>
+      <div class="card-body">
+        <p>
+          {{ course.description }}
+        </p>
+        <p>This is a {{ course.numberOfDays }}-day class.</p>
+      </div>
+      <div class="card-footer">
+        <a
+          *ngIf="course.hasOfferings"
+          [routerLink]="['offerings', course.id]"
+          class="btn btn-sm btn-success"
+          >See When this Course is Offered</a
         >
+        <div class="alert alert-info" *ngIf="!course.hasOfferings">
+          This course is not currently offered. Check back later.
+          <app-ui-dev-tip
+            >Maybe let them sign up for a notification?</app-ui-dev-tip
+          >
+        </div>
       </div>
     </div>
   </li>
