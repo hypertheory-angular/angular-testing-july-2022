@@ -20,14 +20,27 @@ describe('The Courses Route', () => {
         cy.intercept('/api/references/courses', {
           fixture: 'many-courses.json',
         });
-        cy.intercept('GET', '/api/references/offerings', {
-          data: [],
+        cy.intercept('/api/references/offerings', {
+          fixture: 'many-offerings.json',
         });
 
         cy.visit('/courses');
       });
 
-      it('shows the stuff', () => {});
+      it('shows the stuff', () => {
+        cy.get('[data-test-id="courses-list"]').should('exist');
+      });
+      it('shows all the courses', () => {
+        cy.get('[data-test-id^="courses-list-item-"]').should('have.length', 8);
+      });
+      it('should not show the other alerts', () => {
+        cy.get('[data-test-id="courses-list-alert-no-courses"]').should(
+          'not.exist'
+        );
+        cy.get('[data-test-id="courses-list-alert-api-error"]').should(
+          'not.exist'
+        );
+      });
     });
     describe('No Courses Returned From Api', () => {
       beforeEach(() => {
