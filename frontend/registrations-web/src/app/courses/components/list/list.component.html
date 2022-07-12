@@ -5,23 +5,32 @@
 >
   <li class="card card-item" *ngFor="let course of courses; index as i">
     <div class="card card-item" [attr.data-test-id]="'courses-list-item-' + i">
-      <div class="card-header course-title">
+      <div class="card-header course-title" data-test-id="course-item-title">
         {{ course.title }}
       </div>
       <div class="card-body">
-        <p>
+        <p data-test-id="course-item-description">
           {{ course.description }}
         </p>
-        <p>This is a {{ course.numberOfDays }}-day class.</p>
+        <p>
+          This is a
+          <span data-test-id="course-item-days">{{ course.numberOfDays }}</span
+          >-day class.
+        </p>
       </div>
       <div class="card-footer">
         <a
+          data-test-id="course-item-offerings"
           *ngIf="course.hasOfferings"
           [routerLink]="['offerings', course.id]"
           class="btn btn-sm btn-success"
           >See When this Course is Offered</a
         >
-        <div class="alert alert-info" *ngIf="!course.hasOfferings">
+        <div
+          data-test-id="course-item-no-offerings"
+          class="alert alert-info"
+          *ngIf="!course.hasOfferings"
+        >
           This course is not currently offered. Check back later.
           <app-ui-dev-tip
             >Maybe let them sign up for a notification?</app-ui-dev-tip
