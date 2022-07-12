@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "id": "62c2ec941affac574888b80e",
+      "course": "course-1",
+      "startDate": "2022-07-05T00:00:00Z",
+      "startTime": "9:30 AM ET",
+      "endTime": "5:00 PM ET",
+      "location": "Online - Microsoft Teams",
+      "price": 323.28,
+      "deliveryMethod": "Online",
+      "hasSeatsAvailable": true
+    }
+  ]
+}

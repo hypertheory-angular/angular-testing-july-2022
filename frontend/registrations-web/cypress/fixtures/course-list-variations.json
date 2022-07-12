@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "id": "course-1",
+      "title": "Angular State Management",
+      "description": "While a beginning-level Angular developer entering this training would have the basic skills to create simple Angular applications, when working in a team of developers, having consistent patterns for making data available to components, modeling interactions in a observable, traceable way, and dealing with API calls is imperative.",
+      "numberOfDays": 3
+    },
+    {
+      "id": "course-2",
+      "title": "Angular Developer Testing",
+      "description": "In a DevOps environment, developers take responsibility for the quality (internal and external) of their applications and their build and test pipelines. This course will emphasize the process for creating automated tests for our Angular applications, including low-level Unit Tests, and Isolated Integration Tests.",
+      "numberOfDays": 3
+    }
+  ]
+}
