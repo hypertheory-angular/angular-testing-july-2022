@@ -1,0 +1,38 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/ui-lib/src",
+  "prefix": "hypertheory",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/ui-lib"],
+      "options": {
+        "project": "libs/ui-lib/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ui-lib/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/ui-lib/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ui-lib"],
+      "options": {
+        "jestConfig": "libs/ui-lib/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/ui-lib/**/*.ts", "libs/ui-lib/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}
