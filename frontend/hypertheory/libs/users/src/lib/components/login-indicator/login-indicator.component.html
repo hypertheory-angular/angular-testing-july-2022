@@ -1,0 +1,9 @@
+<div *ngIf="isLoggedIn$ | async" data-test="login-indicator-logged-in">
+  <button class="btn btn-sm btn-primary" (click)="logout()">
+    Logged in as {{ (user$ | async)?.preferred_username }} (click to log out)
+  </button>
+</div>
+
+<div *ngIf="(isLoggedIn$ | async) === false" data-test="login-indicator-logged-out">
+  <button (click)="login()">Log in!</button>
+</div>

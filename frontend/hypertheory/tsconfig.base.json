@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@hypertheory/ui-lib": ["libs/ui-lib/src/index.ts"]
+      "@hypertheory/ui-lib": ["libs/ui-lib/src/index.ts"],
+      "@hypertheory/users": ["libs/users/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

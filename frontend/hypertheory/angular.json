@@ -4,6 +4,7 @@
   "projects": {
     "angular-host": "apps/angular-host",
     "angular-host-e2e": "apps/angular-host-e2e",
-    "ui-lib": "libs/ui-lib"
+    "ui-lib": "libs/ui-lib",
+    "users": "libs/users"
   }
 }
