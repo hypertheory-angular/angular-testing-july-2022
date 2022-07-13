@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClickarooComponent matches the snapshot 1`] = `
+<hypertheory-clickaroo
+  __ngContext__={[Function Number]}
+  buttonClicked={[Function EventEmitter_]}
+>
+  <div
+    class="alert alert-success"
+  >
+    <p>
+      This is a The Magic Button! Click it for a good time!
+    </p>
+    <input
+      type="text"
+    />
+    <button
+      class="btn btn-primary"
+    >
+      Click Me
+    </button>
+  </div>
+</hypertheory-clickaroo>
+`;
