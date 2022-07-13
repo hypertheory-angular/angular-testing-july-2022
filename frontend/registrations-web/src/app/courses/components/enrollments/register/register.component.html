@@ -54,6 +54,7 @@
 
         <div class="form-check">
           <input
+            data-test-id="register-agree-to-terms"
             aria-describedby="termsText"
             type="checkbox"
             class="form-check-input"
@@ -71,6 +72,7 @@
         </div>
         <div class="form-check">
           <input
+            data-test-id="register-agree-to-pay"
             aria-describedby="termsPayText"
             type="checkbox"
             class="form-check-input"
@@ -117,6 +119,7 @@
             >Your Comments or Special Needs <small>(Optional)</small></label
           >
           <textarea
+            data-test-id="register-comments"
             [maxlength]="commentsMaxLength"
             aria-describedby="commentsDescription"
             class="form-control"

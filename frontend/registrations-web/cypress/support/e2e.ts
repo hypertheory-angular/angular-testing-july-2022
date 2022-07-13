@@ -25,3 +25,5 @@ declare global {
 }
 
 import './commands';
+
+import 'cypress-keycloak';
