@@ -8,7 +8,7 @@
 
         {{ model.studentName }}
       </div>
-      <app-ui-status-indicator></app-ui-status-indicator>
+      <hypertheory-ui-lib-status-indicator></hypertheory-ui-lib-status-indicator>
     </li>
     <li
       class="list-group-item d-flex justify-content-between align-items-start completed"
@@ -17,7 +17,7 @@
         <div class="fw-bold">Student Email</div>
         {{ model.studentEmail }}
       </div>
-      <app-ui-status-indicator></app-ui-status-indicator>
+      <hypertheory-ui-lib-status-indicator></hypertheory-ui-lib-status-indicator>
     </li>
     <li
       class="list-group-item d-flex justify-content-between align-items-start completed"
@@ -26,7 +26,7 @@
         <div class="fw-bold">Course</div>
         {{ model.course?.title }}
       </div>
-      <app-ui-status-indicator></app-ui-status-indicator>
+      <hypertheory-ui-lib-status-indicator></hypertheory-ui-lib-status-indicator>
     </li>
     <li
       class="list-group-item d-flex justify-content-between align-items-start completed"
@@ -40,7 +40,7 @@
         {{ model.offering?.startTime }} -
         {{ model.offering?.endTime }}
       </div>
-      <app-ui-status-indicator></app-ui-status-indicator>
+      <hypertheory-ui-lib-status-indicator></hypertheory-ui-lib-status-indicator>
     </li>
     <li
       class="list-group-item d-flex justify-content-between align-items-start"
@@ -95,14 +95,14 @@
           <p>You must agree to the terms.</p>
         </div>
       </div>
-      <app-ui-status-indicator
+      <hypertheory-ui-lib-status-indicator
         [status]="agreeToTerms ? 'success' : 'error'"
         [statusText]="
           agreeToTerms
             ? 'You have agreed to the terms'
             : 'You must agree to the terms'
         "
-      ></app-ui-status-indicator>
+      ></hypertheory-ui-lib-status-indicator>
     </li>
     <li
       class="list-group-item d-flex justify-content-between align-items-start"
@@ -133,12 +133,12 @@
           </div>
         </div>
       </div>
-      <app-ui-status-indicator
+      <hypertheory-ui-lib-status-indicator
         [status]="hasComments ? 'success' : 'optional'"
         [statusText]="
           hasComments ? 'Thanks for the comments' : 'Comments are optional.'
         "
-      ></app-ui-status-indicator>
+      ></hypertheory-ui-lib-status-indicator>
     </li>
     <li
       class="list-group-item d-flex justify-content-between align-items-start"
@@ -153,10 +153,10 @@
           Submit Registration Request
         </button>
       </div>
-      <app-ui-status-indicator
+      <hypertheory-ui-lib-status-indicator
         [status]="formReady ? 'success' : 'error'"
         [statusText]="formReady ? 'Ready to submit' : 'Fix All Errors First!'"
-      ></app-ui-status-indicator>
+      ></hypertheory-ui-lib-status-indicator>
     </li>
   </ol>
 </form>

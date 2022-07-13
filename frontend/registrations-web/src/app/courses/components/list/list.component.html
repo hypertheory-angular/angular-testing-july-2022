@@ -26,16 +26,6 @@
           class="btn btn-sm btn-success"
           >See When this Course is Offered</a
         >
-        <div
-          data-test-id="course-item-no-offerings"
-          class="alert alert-info"
-          *ngIf="!course.hasOfferings"
-        >
-          This course is not currently offered. Check back later.
-          <app-ui-dev-tip
-            >Maybe let them sign up for a notification?</app-ui-dev-tip
-          >
-        </div>
       </div>
     </div>
   </li>
