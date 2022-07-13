@@ -32,6 +32,35 @@
       "options": {
         "lintFilePatterns": ["libs/ui-lib/**/*.ts", "libs/ui-lib/**/*.html"]
       }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "libs/ui-lib/.storybook",
+        "browserTarget": "ui-lib:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputDir": "dist/storybook/ui-lib",
+        "configDir": "libs/ui-lib/.storybook",
+        "browserTarget": "ui-lib:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
     }
   },
   "tags": []
